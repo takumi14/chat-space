@@ -46,14 +46,16 @@ groupsテーブル
 
 ### Association
 - has_many :users, through :members
+- has_many :messages
 - has_many :members
+
 
 
 messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |user_id|integer|null: false|
 |group_id|integer|null: false|
