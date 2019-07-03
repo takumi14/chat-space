@@ -32,7 +32,7 @@ usersテーブル
 |mail|string|null: false|
 
 ### Association
-- has_many :groups, through :members
+- has_many :groups, through: :members
 - has_many :messages
 - has_many :members
 
@@ -45,7 +45,7 @@ groupsテーブル
 |name|string|null: false|
 
 ### Association
-- has_many :users, through :members
+- has_many :users, through: :members
 - has_many :messages
 - has_many :members
 
