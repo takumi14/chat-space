@@ -4,17 +4,18 @@
 %meta(charset="UTF-8")
 %link(href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet")
 %body
-  .flash-box
   %div.wrapper
     .chat-side
       .side-header
         .side-header__user-name
           yamada
         .user-menu
-          %a.user-menu__edit-user{href: '/groups/new'}
-            %i.fas.fa-edit
-          %a.user-menu__new-group{href: '/users/edit'}
-            %i.fas.fa-cog
+          .user-menu__edit-user
+            = link_to "#" do
+              %i.fas.fa-edit
+          .user-menu__new-group
+            = link_to "#" do
+              %i.fas.fa-cog
       .groups
         .group
           .group__group-name
