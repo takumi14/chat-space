@@ -1,0 +1,54 @@
+!!!
+%html{lang: "ja"}
+%head
+%meta(charset="UTF-8")
+%link(href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet")
+%body
+  .flash-box
+  %div.wrapper
+    .chat-side
+      .side-header
+        .side-header__user-name
+          yamada
+        .user-menu
+          %a.user-menu__edit-user{href: '/groups/new'}
+            %i.fas.fa-edit
+          %a.user-menu__new-group{href: '/users/edit'}
+            %i.fas.fa-cog
+      .groups
+        .group
+          .group__group-name
+            グループの名前
+          .group__latest-message
+            ここがメッセージ
+        .group
+          .group__group-name
+            グループの名前
+          .group__latest-message
+            ここがメッセージ
+    .chat-main
+      .main-header
+        .current-group
+          .current-group__name
+            test
+          .member-list
+            Member: takumi yuuki
+        .main-header__edit-btn
+          .main-header__edit-btn__text
+            Edit
+      .messages
+        = render partial: "message"
+      .form
+        .new-message
+          .input-box
+            .input-box__text
+              %input{placeholder: "type a message"} 
+            .image-label
+              %form{action: "#", method: "post", enctype: "multipart/form-data"}
+                %label
+                  %i.far.fa-image
+                  %input{class: "image",type: "file", name: "upfile", value: ".upload-label"}
+          .new-message__submit-btn
+            .new-message__submit-btn__text
+              Send
+   
