@@ -8,14 +8,14 @@
     .chat-side
       .side-header
         .side-header__user-name
-          yamada
+          = current_user.name
         .user-menu
           .user-menu__edit-user
-            = link_to "#" do
-              %i.fas.fa-edit
+            = link_to do
+              = fa_icon 'pencil-square-o', class: 'icon'
           .user-menu__new-group
-            = link_to "#" do
-              %i.fas.fa-cog
+            = link_to edit_user_path(current_user) do
+              = fa_icon 'cog', class: 'icon'
       .groups
         .group
           .group__group-name
