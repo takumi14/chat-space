@@ -17,18 +17,12 @@
           .main-header__edit-btn__text
             Edit
       .messages
-        = render partial: "message"
+        = render partial: 'message', collection: @messages
       .form
-        .new-message
-          .input-box
-            .input-box__text
-              %input{placeholder: "type a message"} 
-            .image-label
-              %form{action: "#", method: "post", enctype: "multipart/form-data"}
-                %label
-                  %i.far.fa-image
-                  %input{class: "image",type: "file", name: "upfile", value: ".upload-label"}
-          .new-message__submit-btn
-            .new-message__submit-btn__text
-              Send
-   
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+            = f.submit 'Send', class: 'form__submit'
