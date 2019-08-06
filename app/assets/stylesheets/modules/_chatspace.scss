@@ -110,7 +110,6 @@
         background-color:#fafafa;
         overflow: scroll;
         .message{
-          height: 80px;
            width: 200px;
            margin-top: 40px;
           .message__upper-info{
@@ -118,7 +117,7 @@
             width: 500px;
             display: flex;
             .message__upper-info__user{
-              width: 50px;
+              width: 100px;
               text-align: left;
               font-size: 16px;
               color: #999999;
@@ -132,7 +131,7 @@
           }//upper-info
           .massage__text{
             height: 20px;
-            width: 100px;
+            width: 300px;
             font-size: 14px;
             text-align: left;
             color: #999999;
