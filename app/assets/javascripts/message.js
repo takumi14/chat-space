@@ -20,23 +20,22 @@ $(function() {
   };
     var reloadMessages = function() {
 
-      var  last_message_id = $('.message:last').data('message-id');
+      var last_message_id = $('.message:last').data('message-id');
+      
+      //dataメソッドで.messageにある:last最後のカスタムデータ属性を取得しlast_message_idに代入。
 
-      $.ajax({
-        url: "api/messages",
-        type: 'get',
-        dataType: 'json',
-        data: {id: last_message_id}
+      $.ajax({                                     //ajax通信で以下のことを行う
+        url: "api/messages",                      //サーバを指定。今回はapi/message_controllerに処理を飛ばす
+        type: 'get',                              //メソッドを指定
+        dataType: 'json',                        //データはjson形式
+        data: {id: last_message_id}             //飛ばすデータは先ほど取得したlast_message_id。またparamsとして渡すためid
       })
-      .done(function(new_messages) {
+      .done(function(new_messages) {             //通信成功したら、controllerから受け取ったデータ（new_messages)を引数にとって以下のことを行う
 
-      new_messages.forEach(function(message) {
-
-        var insertHTML = buildHTML(message);  
-
-        $('.messages').append(insertHTML);
-
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+        new_messages.forEach(function(message) {    //配列new_messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+        var insertHTML = buildHTML(message);      //追加するHTMLの入れ物を作り、メッセージが入ったHTMLを取得
+        $('.messages').append(insertHTML);        //メッセージを追加
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');   //最新のメッセージが一番下に表示されようにスクロールする。
       })
     })
       .fail(function() {
@@ -45,7 +44,7 @@ $(function() {
     }
 
 
-    if(document.URL.match(/\/groups\/\d+\/messages/)){
+    if(document.URL.match(/\/groups\/\d+\/messages/)){  //今いるページのリンクが/groups/グループID/messagesのパスとマッチすれば以下を実行。
         setInterval(reloadMessages, 5000);
       }
 
