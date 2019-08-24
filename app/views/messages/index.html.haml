@@ -10,12 +10,13 @@
       .main-header
         .current-group
           .current-group__name
-            test
+            = @group.name
           .member-list
-            Member: takumi yuuki
+            - @group.group_users.each do |group_user|
+              = group_user.user.name
         .main-header__edit-btn
           .main-header__edit-btn__text
-            Edit
+            = link_to "Edit", edit_group_path(params[:group_id]), method: :get
       .messages
         = render partial: 'message', collection: @messages
       .form
